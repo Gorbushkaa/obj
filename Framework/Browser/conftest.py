@@ -1,6 +1,5 @@
-from selenium import webdriver
 import pytest
-from browser_sigletone import BrowserSingletone
+from Framework.Browser.browser_sigletone import BrowserSingletone
 import json
 
 
@@ -13,4 +12,6 @@ def pytest_addoption(parser):
 def browser(request):
     browser = request.config.getoption('--browser')
     bs = BrowserSingletone()
-    bs.get_browser(browser)
+    driver = bs.get_driver(browser)
+    yield driver
+    bs.quit_driver()

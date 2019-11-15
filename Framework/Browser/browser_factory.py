@@ -8,10 +8,8 @@ class BrowserFactory:
     def create_driver(self):
         if self.browser == "chrome":
             driver = webdriver.Chrome()
-            yield driver
-            driver.quit()
+            return driver
         elif self.browser == "firefox":
             driver = webdriver.Firefox()
-            yield driver
-            driver.quit()
+            return driver
 
